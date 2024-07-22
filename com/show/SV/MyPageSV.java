@@ -1,10 +1,11 @@
 package com.show.SV;
 
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.show.DTO.MemberDTO;
-import com.show.NoExistException;
+import com.show.exception.NoExistException;
 
 public class MyPageSV {
 
@@ -23,7 +24,7 @@ public class MyPageSV {
 	}// --myInfo()
 
 	/* 메서드-회원정보수정 */
-	public static void modify(Scanner s, MemberDTO loginState, ArrayList<MemberDTO> loginDTOs) {
+	public static void modify(MemberDTO loginState, Scanner s, Scanner sL, Connection connection ) {
 		myInfo(loginState);
 		boolean run = true;
 		MemberDTO modAccount = new MemberDTO();// 수정정보 저장용 빈객체 생성
@@ -72,7 +73,7 @@ public class MyPageSV {
 	}// --modify()
 
 	/* 메서드-회원탈퇴 */
-	public static void delete(Scanner s, MemberDTO loginState, ArrayList<MemberDTO> loginDTOs) throws NoExistException {
+	public static void delete(MemberDTO loginState, Scanner s, Scanner sL, Connection connection) throws NoExistException {
 		boolean run = true;
 		while (run) {
 			System.out.println("회원을 탈퇴하시겠습니까? \n모든 서비스에 대한 권리를 상실하실 수 있습니다.");
