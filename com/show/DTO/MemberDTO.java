@@ -1,5 +1,7 @@
 package com.show.DTO;
 
+import java.sql.Date;
+
 public class MemberDTO {
 	// 필드 --DB와 공유되는 필드
 	private int mno; //멤버번호 : db에서 시퀀스로 생성

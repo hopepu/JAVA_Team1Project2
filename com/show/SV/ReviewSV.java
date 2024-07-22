@@ -125,11 +125,11 @@ public class ReviewSV {
          String con = s.next();
          
          System.out.println("수정할 별점을 1~5점까지 입력해주세요.");
-         int star = s.nextInt();
+         String star = s.next();
    
          ReviewDTO box = new ReviewDTO();
          box.setReview(con);
-         box.setStarPoint(별);
+         box.setStarPoint(star);
          
          
          ReviewDAO review = new ReviewDAO();
@@ -159,6 +159,7 @@ public class ReviewSV {
          break;
          
       case 2 :
+    	  
          System.out.println("작품 리뷰 목록 ");
          
          break;

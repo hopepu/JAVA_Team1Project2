@@ -55,6 +55,9 @@ public class LoginSV {
       System.out.println("전화번호를 입력하세요");
       System.out.print(">>>");
       join.setpNo(s.next());
+      
+      MemberMDAO memberMDAO = new MemberMDAO();
+      memberMDAO.join(connection, join);
 
       
 
@@ -69,7 +72,7 @@ public class LoginSV {
       MemberDTO loginDTO = new MemberDTO(id, pw); // 입력받은 ID,PW를 넣을 객체 생성
       System.out.println();
       MemberMDAO memberDAO = new MemberMDAO();  // 객체가 생성/  connection을 여기에 쓰면 생성되면서 1단,2단계 정보가 들어감.
-      return memberDAO.login(connection, loginDTO);  // connection : 호출할때 정보를 밀어넣음
+      return memberDAO.login(connection, loginState, loginDTO);  // connection : 호출할때 정보를 밀어넣음
    }// login method close
 
    /* 메서드-주민번호 추출 */

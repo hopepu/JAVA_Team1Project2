@@ -11,7 +11,8 @@ import com.show.DTO.ShowDTO;
 
 public class MenuSV { // 모든 메뉴 모음
 	/*1. 메인메뉴 */
-	public static void mainMenu(MemberDTO loginState, Scanner sL, Scanner s, Connection connection) {
+	
+	public static void mainMenu(MemberDTO loginState, Scanner s, Scanner sL, Connection connection) {
 		System.out.println("<오잼>(가제 : 오늘은 무엇이 재밌을까?)에 오신것을 환영합니다.");
 		
 		boolean run = true;
@@ -23,8 +24,7 @@ public class MenuSV { // 모든 메뉴 모음
 
 			switch (select) {
 			case 1:
-				ShowSV showSV;
-				//showSV.showMenu(loginState, s, sL, connection);
+				ShowSV.showMenu(loginState, s, sL, connection);
 				break;
 			case 2:
 				loginMenu(loginState, s, sL, connection);
@@ -109,11 +109,11 @@ public class MenuSV { // 모든 메뉴 모음
 			int selInt = s.nextInt();
 			switch (selInt) {
 			case 1:
-				MyPageSV.modify(loginState, s, sL, connection);
+				MyPageSV.modify(loginState, s, s, connection);
 				break;
 			case 2:
 				try {
-					MyPageSV.delete(loginState, s, sL, connection);
+					MyPageSV.delete(s, loginState, connection);
 				} catch (Exception e) {
 					String message = e.getMessage();
 					System.out.println(message);
@@ -138,11 +138,13 @@ public class MenuSV { // 모든 메뉴 모음
 		boolean run=true;
 		while(run) {
 			System.out.println("1.아이디찾기 | 2.비밀번호찾기 | 3.닫기");
+			FindSV findSV = new FindSV();
 			int selInt = s.nextInt();
 			switch(selInt) {
 			case 1:
 				try {
-					FindSV.idFind(loginState, s, sL, connection); 
+					
+					findSV.idFind(loginState, s, sL, connection); 
 				} catch (Exception e) {
 					String message = e.getMessage();
 					System.out.println(message);
@@ -151,7 +153,8 @@ public class MenuSV { // 모든 메뉴 모음
 				break;
 			case 2:
 				try {
-					FindSV.pwFind(loginState, s, sL, connection);
+					System.out.println("비밀번호 찾기 메서드에 진입합니다.");
+					//FindSV.pwFind(loginState, s, sL, connection);
 				} catch (Exception e) {
 					String message = e.getMessage();
 					System.out.println(message);

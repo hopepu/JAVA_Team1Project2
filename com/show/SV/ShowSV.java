@@ -13,7 +13,7 @@ public class ShowSV {
 //   합칠 때 메인메서드 대신 사용할 메서드   
 //   }
 
-   public void showMenu(MemberDTO loginState, Scanner s, Scanner sL, Connection connection) {
+   public static void showMenu(MemberDTO loginState, Scanner s, Scanner sL, Connection connection) {
      // MainExam main = new MainExam();
       
       boolean run = true;

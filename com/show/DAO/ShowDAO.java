@@ -96,7 +96,7 @@ public class ShowDAO {
          }
       } catch (Exception e) {
 //         System.out.println("SQL문을 확인해주세요.");
-//         e.printStackTrace();
+        // e.printStackTrace();
       }
       
    }// search 메서드 종료(단어검색)

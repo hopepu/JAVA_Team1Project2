@@ -19,8 +19,7 @@ public class MainExam {
 	public MainExam() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			connection = DriverManager.getConnection
-					("jdbc:oracle:thin:@192.168.0.104:1521:xe", "pm", "pmpmpm");
+			connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.0.104:1521:xe", "pm", "pmpmpm");
 		} catch (ClassNotFoundException e) {
 			System.out.println("드라이버명 또는 ojdbc6.jar를 확인해주세요");
 		} catch (SQLException e) {
@@ -31,10 +30,9 @@ public class MainExam {
 	}
 
 	public static void main(String[] args) {
-		
-		
+		MainExam mainExam = new MainExam();		
 		loginState = new MemberDTO(); //guest 용 객체로 loginState 생성
-		MenuSV.mainMenu(s, sL, loginState, connection);
+		MenuSV.mainMenu(loginState, s, s, connection);
 
 	}// main close
 

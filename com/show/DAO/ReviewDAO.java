@@ -105,7 +105,7 @@ public class ReviewDAO {
          
          PreparedStatement preparedStatement = connection.prepareStatement(sql);
          preparedStatement.setInt(1, "rno");
-         preparedStatement.setString(2, "rnickname");
+         preparedStatement.setString(2, lSt.getId());
          
          
          
