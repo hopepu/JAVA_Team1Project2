@@ -19,7 +19,7 @@ public class MainExam {
 	public MainExam() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.0.104:1521:xe", "pm", "pmpmpm");
+			connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "member", "member1919");
 		} catch (ClassNotFoundException e) {
 			System.out.println("드라이버명 또는 ojdbc6.jar를 확인해주세요");
 		} catch (SQLException e) {
