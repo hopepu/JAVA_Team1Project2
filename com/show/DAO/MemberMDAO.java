@@ -115,7 +115,7 @@ public class MemberMDAO {
          
       }
 
-      public MemberDTO compare(Connection connection, MemberDTO memberDTO) {
+      public MemberDTO checkId(Connection connection, MemberDTO memberDTO) {
     	  try {
 			String sql = "select count(*) as count1 from member where id=?";
 			// count(*) : 모든 row의 개수를 count1이란 이름으로 개수를 알려줌
@@ -147,7 +147,7 @@ public class MemberMDAO {
     	  
       }
       
-      public MemberDTO compare2(Connection con, MemberDTO memberDTO) {
+      public MemberDTO checkNick(Connection con, MemberDTO memberDTO) {
     	  try {
 			String sql = "select count(*) as count2 from member where nickName=?";
 			  PreparedStatement preparedStatement = con.prepareStatement(sql);
@@ -174,5 +174,32 @@ public class MemberMDAO {
     	  return memberDTO;
       }
 	 
+      public MemberDTO checkIdPw(Connection conn, MemberDTO memberDTO) {
+    	  try {
+			String sql="select count(*) as count3 from member where id=? and pw=?";
+			  PreparedStatement preparedStatement = conn.prepareStatement(sql);
+			  preparedStatement.setString(1, memberDTO.getId());
+			  preparedStatement.setString(2, memberDTO.getPw());
+			  ResultSet resultSet = preparedStatement.executeQuery();
+			  int newcount3=0;
+			  while(resultSet.next()) {
+				  newcount3 = resultSet.getInt("count3");
+				  if(newcount3==0) {
+					  memberDTO.setUsability(false);
+				  }else {
+					  memberDTO.setUsability(true);
+				  }	// if end of			  
+			  }	// while end of
+			  
+			  resultSet.close();
+			  preparedStatement.close();
+			  
+		} catch (SQLException e) {
+			System.out.println("sql문을 확인하세요");
+			e.printStackTrace();
+		} // try/catch end of
+    	  
+    	  return memberDTO;
+      }
       
 }

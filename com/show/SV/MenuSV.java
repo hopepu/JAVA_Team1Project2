@@ -133,7 +133,7 @@ public class MenuSV { // 모든 메뉴 모음
 		} // --while()
 	}// --myPageMenu()
 
-	/* 3-1. 회원정보찾기 메누*/
+	/* 3-1. 회원정보찾기 메뉴*/
 	public static void findInfoeMenu(MemberDTO loginState, Scanner s, Scanner sL, Connection connection) {
 		boolean run=true;
 		while(run) {

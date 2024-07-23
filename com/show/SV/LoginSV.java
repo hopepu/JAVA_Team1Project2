@@ -22,7 +22,7 @@ public class LoginSV {
 			System.out.print(">>>");
 			join.setId(s.next());
 
-			join = memberMDAO.compare(connection, join);  // 너는 이 ID를 가지고있니?
+			join = memberMDAO.checkId(connection, join);  // 너는 이 ID를 가지고있니?
 			if (join.isUsability()) {
 				System.out.println("사용가능한 ID입니다.");
 				condition = false;
@@ -56,7 +56,7 @@ public class LoginSV {
 			System.out.println("원하시는 닉네임을 입력하세요");
 			System.out.print(">>>");
 			join.setNickName(s.next());
-			join = memberMDAO.compare(connection, join); // 너는 이 닉네임을 가지고있니?
+			join = memberMDAO.checkNick(connection, join); // 너는 이 닉네임을 가지고있니?
 			if (join.isUsability()) {
 				System.out.println("사용 가능한 닉네임 입니다.");
 				condition2=false;
@@ -85,10 +85,27 @@ public class LoginSV {
 		String id = s.next();
 		System.out.print("PW : ");
 		String pw = s.next();
+		// id pw가 db에 있는 사람인지 검증
+		
+		// 검증된 사람만 다시 db로 가서 정보를 가져오도록 한다
 		MemberDTO loginDTO = new MemberDTO(id, pw); // 입력받은 ID,PW를 넣을 객체 생성
 		System.out.println();
 		MemberMDAO memberDAO = new MemberMDAO(); // 객체가 생성/ connection을 여기에 쓰면 생성되면서 1단,2단계 정보가 들어감.
-		return memberDAO.login(connection, loginState, loginDTO); // connection : 호출할때 정보를 밀어넣음
+		
+		// 로그인 정보를 loginState로 보낼때 모든 정보를 포함해서 보내야 하는데 우짤까 
+		// db에 있는 사람인지 없는 사람인지 어떻게 판별할까?
+		loginDTO = memberDAO.checkIdPw(connection, loginDTO);
+		if(loginDTO.isUsability()) { // isUsability가 true인 상황
+			loginState = memberDAO.login(connection, loginState, loginDTO);
+			loginState.setLoginStatus(true);
+			return loginState; // db의 정보를 채워서 보낸다.
+		}else {
+			System.out.println("회원정보를 찾을 수 없습니다.");
+			System.out.println("로그인을 하세요.");
+			return loginState;   // 게스트 상태를 그대로 반환
+		} // if end of
+	//	return memberDAO.login(connection, loginState, loginDTO); // connection : 호출할때 정보를 밀어넣음
+		
 	}// login method close
 
 	/* 메서드-주민번호 추출 */
