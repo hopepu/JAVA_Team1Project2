@@ -108,6 +108,7 @@ public class MemberKDAO { // DB - member table 데이터 처리
 			pps.setString(1, memberDTO.getNickName());
 			pps.setString(2, memberDTO.getpNo());
 			pps.setString(3, memberDTO.getMail());
+			pps.setString(4, memberDTO.getId());
 
 			result = pps.executeUpdate();
 			if (result > 0) {

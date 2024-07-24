@@ -109,7 +109,7 @@ public class MenuSV { // 모든 메뉴 모음
 			int selInt = s.nextInt();
 			switch (selInt) {
 			case 1:
-				myPageSV.modify(s, loginState, connection); //sun2024.07.20
+				loginState = myPageSV.modify(s, loginState, connection); //sun2024.07.23
 				break;
 			case 2:
 				loginState = myPageSV.delete(s, loginState, connection); //sun2024.07.20
