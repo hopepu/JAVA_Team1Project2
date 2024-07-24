@@ -108,6 +108,10 @@ public class MemberKDAO { // DB - member table 데이터 처리
 			pps.setString(1, memberDTO.getNickName());
 			pps.setString(2, memberDTO.getpNo());
 			pps.setString(3, memberDTO.getMail());
+<<<<<<< HEAD
+=======
+			pps.setString(4, memberDTO.getId());
+>>>>>>> origin/kjs
 
 			result = pps.executeUpdate();
 			if (result > 0) {
@@ -177,4 +181,8 @@ public class MemberKDAO { // DB - member table 데이터 처리
 
 	}// --delete()
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/kjs
