@@ -1,6 +1,7 @@
 Drop table member;
 --member 테이블 생성
 CREATE table member(
+<<<<<<< HEAD
 	mno NUMBER(5) CONSTRAINT MT_NO_PK PRIMARY KEY,
 	id NVARCHAR2(8) CONSTRAINT MT_ID_UQ UNIQUE,
 	pw NVARCHAR2(15) CONSTRAINT MT_PW_NN NOT NULL,
@@ -16,6 +17,23 @@ CREATE SEQUENCE mem_seq
 	INCREMENT BY 1
 	START WITH 1
 	NOCACHE;
+=======
+   mno NUMBER(5) CONSTRAINT MT_NO_PK PRIMARY KEY,
+   id NVARCHAR2(8) CONSTRAINT MT_ID_UQ UNIQUE,
+   pw NVARCHAR2(15) CONSTRAINT MT_PW_NN NOT NULL,
+   name NVARCHAR2(5) CONSTRAINT MT_NAME_NN NOT NULL,
+   nickName NVARCHAR2(10) CONSTRAINT MT_NICK_UQ UNIQUE,
+   birth Date,
+   sex NVARCHAR2(2),
+   phone NVARCHAR2(20),
+   mail NVARCHAR2(50),
+   author NVARCHAR2(10) );
+--mno 시퀀스 생성   
+CREATE SEQUENCE mem_seq
+   INCREMENT BY 1
+   START WITH 1
+   NOCACHE;
+>>>>>>> origin/moon
 --alter table member MODIFY sex constraint MT_SEX_CK CHECK sex IN ('남','여'); 
 --sql2는 도메인을 명시적으로 정의하지만, 오라클은 지원하지 않음
 
@@ -42,10 +60,17 @@ update member set nickName = 'newnick' , phone='010-123-4567', mail='aaa@mail.co
 delete from member where id='bbb' and pw='bbb';
 --변경하지 않은 값은 예전 값으로 넣으면 알아서 들어감
 
+<<<<<<< HEAD
 --author테이블(외래키용으로 했으나 잘 연결되지 않아 사용하지 않음)
 CREATE TABLE author(
 	alevel NUMBER(2) NOT NULL,
 	authorname NVARCHAR2(10) PRIMARY KEY
+=======
+--author테이블
+CREATE TABLE author(
+   alevel NUMBER(2) NOT NULL,
+   authorname NVARCHAR2(10) PRIMARY KEY
+>>>>>>> origin/moon
 );
 
 --alter table author RENAME column alevel TO level; //level은 필드명 생성 안됨
@@ -93,4 +118,14 @@ update member set pw='15587' where id='aaa' and phone='010-123-4567';
 insert into member (mno, id, pw, name, nickName, birth, sex, phone, mail)
 VALUES (mem_seq.nextval, 'ccc', 'ccc', 'cname', 'cnick', TO_DATE('1998/12/31','YYYY/MM/DD'),'여','0101234567','ccc@mail.com');
 
+<<<<<<< HEAD
 update member set author=(select authorname from author where alevel=1) where id='ccc' and nickname='cnick';
+=======
+update member set author=(select authorname from author where alevel=1) where id='ccc' and nickname='cnick';
+
+select * from member where id='ccc';
+
+select count(*) from member where id='ccc';
+
+select * from member where nickName= 'cname';
+>>>>>>> origin/moon

@@ -116,8 +116,92 @@ public class MemberMDAO {
          
       }
 
-
+      public MemberDTO checkId(Connection connection, MemberDTO memberDTO) {
+    	  try {
+			String sql = "select count(*) as count1 from member where id=?";
+			// count(*) : 모든 row의 개수를 count1이란 이름으로 개수를 알려줌
+			  PreparedStatement preparedStatement = connection.prepareStatement(sql); 
+			  //  PreparedStatement타입의 preparedStatement을 preparedStatement에 conn을 적용
+			  preparedStatement.setString(1,memberDTO.getId()); // 멤버DTO에서 받은 ID를 ?에 넣음.
+			  ResultSet resultSet = preparedStatement.executeQuery(); // 4단계
+			  int newcount=0;
+			  while(resultSet.next()){
+				  // 내가 숫자로 받을 변수 생성
+				   newcount = resultSet.getInt("count1");
+			  }
+			  
+			  if(newcount==0) {
+				  memberDTO.setUsability(true);
+			  }else {
+				  memberDTO.setUsability(false);
+			  }
+			  
+			  resultSet.close();
+			  preparedStatement.close();
+			  
+			  
+		} catch (SQLException e) {
+			System.out.println("sql문을 확인하세요");
+			e.printStackTrace();
+		}
+    	 return memberDTO; 
+    	  
+      }
+      
+      public MemberDTO checkNick(Connection con, MemberDTO memberDTO) {
+    	  try {
+			String sql = "select count(*) as count2 from member where nickName=?";
+			  PreparedStatement preparedStatement = con.prepareStatement(sql);
+			//  PreparedStatement타입의 preparedStatement을 preparedStatement에 con을 적용
+			  preparedStatement.setString(1, memberDTO.getNickName());
+			  ResultSet resultSet = preparedStatement.executeQuery();
+			  int newcount2=0;
+			  while(resultSet.next()) {
+				  newcount2 = resultSet.getInt("count2");
+				  if(newcount2==0) {
+					 memberDTO.setUsability(true);
+				  }else {
+					 memberDTO.setUsability(false);
+				  }
+			  }
+			  
+			  resultSet.close();
+			  preparedStatement.close();
+			  
+		} catch (SQLException e) {
+			System.out.println("sql문을 확인하세요");
+			e.printStackTrace();
+		}
+    	  return memberDTO;
+      }
 	 
+      public MemberDTO checkIdPw(Connection conn, MemberDTO memberDTO) {
+    	  try {
+			String sql="select count(*) as count3 from member where id=? and pw=?";
+			  PreparedStatement preparedStatement = conn.prepareStatement(sql);
+			  preparedStatement.setString(1, memberDTO.getId());
+			  preparedStatement.setString(2, memberDTO.getPw());
+			  ResultSet resultSet = preparedStatement.executeQuery();
+			  int newcount3=0;
+			  while(resultSet.next()) {
+				  newcount3 = resultSet.getInt("count3");
+				  if(newcount3==0) {
+					  memberDTO.setUsability(false);
+				  }else {
+					  memberDTO.setUsability(true);
+				  }	// if end of			  
+			  }	// while end of
+			  
+			  resultSet.close();
+			  preparedStatement.close();
+			  
+		} catch (SQLException e) {
+			System.out.println("sql문을 확인하세요");
+			e.printStackTrace();
+		} // try/catch end of
+    	  
+    	  return memberDTO;
+      }
       
 =======
 	/* C-회원가입 */

@@ -191,8 +191,12 @@ public class MenuSV { // 모든 메뉴 모음
 		} // --while()
 	}// --myPageMenu()
 
+<<<<<<< HEAD
 	/* 3-1. 회원정보찾기 메누*/
 <<<<<<< HEAD
+=======
+	/* 3-1. 회원정보찾기 메뉴*/
+>>>>>>> origin/moon
 	public static void findInfoeMenu(MemberDTO loginState, Scanner s, Scanner sL, Connection connection) {
 =======
 	public static void findInfoMenu(Scanner s,  MemberDTO loginState, Connection connection) { //sun2024.07.20 -sL삭제 
