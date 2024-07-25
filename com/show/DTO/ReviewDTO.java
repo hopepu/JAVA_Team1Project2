@@ -6,14 +6,24 @@ public class ReviewDTO {
 	private String starPoint; // 별점
 	private String review;
 	private String title;
+	private int rno; 
 
 	public ReviewDTO() {}
 	
-	public ReviewDTO(String nickName, String starPoint, String review, String title) {
+	public ReviewDTO(String nickName, String starPoint, String review, String title, int rno) {
 		this.nickName = nickName;
 		this.starPoint = starPoint;
 		this.review = review;
 		this.title = title;
+		this.rno = rno;
+	}
+
+	public int getRno() {
+		return rno;
+	}
+
+	public void setRno(int rno) {
+		this.rno = rno;
 	}
 
 	public String getTitle() {
