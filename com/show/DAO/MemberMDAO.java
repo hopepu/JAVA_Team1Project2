@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import com.show.DTO.MemberDTO;
 
 public class MemberMDAO {
+<<<<<<< HEAD
    // 회원 DB에 대한 C()회원가입), R(로그인), U(회원정보수정), D(회원탈퇴)
    
       public MemberMDAO() {
@@ -202,6 +203,7 @@ public class MemberMDAO {
     	  return memberDTO;
       }
       
+=======
 	/* C-회원가입 */
 	public int register(Connection conn, MemberDTO memberDTO) {
 		// 조인된 뷰로는 두 테이블을 동시수정불가능
@@ -305,4 +307,5 @@ public class MemberMDAO {
 
 	}// --login()
 
+>>>>>>> origin/kjs
 }

@@ -70,7 +70,7 @@ public class ReviewDAO {
 
    }// 리뷰 - 보기 종료
 
-   public void  rmodify(Connection connection, MemberDTO lSt, Scanner s, Scanner sL, ReviewDTO reviewDTO) {
+   public void  rmodify(Connection connection, MemberDTO lSt, Scanner s, Scanner sL, ReviewDTO box) {
       //리뷰 - 수정 
       // 조건 ? 내가 쓴 글을 수정할란다. (닉네임으로 조건)
       
@@ -78,8 +78,8 @@ public class ReviewDAO {
          String sql = "update review set review=?, starpoint=? where rnickname=? ";
          PreparedStatement preparedStatement = connection.prepareStatement(sql);
          
-         preparedStatement.setString(1, reviewDTO.getReview());
-         preparedStatement.setString(2, reviewDTO.getStarPoint());
+         preparedStatement.setString(1, box.getReview());
+         preparedStatement.setString(2,box.getStarPoint());
          
          
          int result = preparedStatement.executeUpdate();
@@ -96,7 +96,7 @@ public class ReviewDAO {
          //e.printStackTrace();
       }
    }
-   public void rdelete(Connection connection, MemberDTO lSt, ReviewDTO reviewDTO) {
+   public void rdelete(Connection connection, MemberDTO lSt) {
       // 리뷰 - 삭제하기
 
       
@@ -104,8 +104,9 @@ public class ReviewDAO {
          String sql = "delete from review where rno=? and rnickname=?";
          
          PreparedStatement preparedStatement = connection.prepareStatement(sql);
-         preparedStatement.setInt(1, reviewDTO.getRno());
+         preparedStatement.setInt(1, "rno");
          preparedStatement.setString(2, lSt.getId());
+         
          
          
          int result = preparedStatement.executeUpdate();
