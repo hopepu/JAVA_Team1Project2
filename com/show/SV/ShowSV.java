@@ -55,35 +55,46 @@ public class ShowSV {
    }
 
    public static void platformMenu(MemberDTO loginState, Scanner s, Scanner sL, Connection connection) {
-      // 플랫폼, 장르별 볼 수 있는 메뉴
-      //MainExam main = new MainExam();
-      boolean showRun = true;
-//      String platform = "platform";
-      String platform1 = "platform";
-      while (showRun) {
-         System.out.println("1. Netflix \n2. Tiving \n3. 전체보기 \n4. 이전");
-         System.out.print(">> ");
-         int select = s.nextInt();
-         switch (select) {
-         case 1:
-            String platform2 = "%Netflix%";
-            show.select(connection, platform1, platform2, s, sL, loginState);
-            
-            break;
-         case 2:
-            String platform3 = "%Tiving%";
-            show.select(connection, platform1, platform3, s, sL, loginState);
-            
-            break;
-         case 3:
-            show.allSelect(connection, s, sL, loginState);
-            break;
-         case 4:
-            System.out.println("메인메뉴로 돌아갑니다.");
-            showRun = false;
-         }
-      }
-   }// 서브메뉴, 종류별 장르별 보기
+	      // 플랫폼, 장르별 볼 수 있는 메뉴
+	      //MainExam main = new MainExam();
+	      boolean showRun = true;
+//	      String platform = "platform";
+	      String platform1 = "platform";
+	      while (showRun) {
+	         System.out.println("1. Netflix \n2. Tiving \n3. Disney+ \n4. 전체보기 \n5. 이전");
+	         System.out.print(">> ");
+	         int select = s.nextInt();
+	         switch (select) {
+	         case 1:
+	            String platform2 = "%Netflix%";
+	            show.select(connection, platform1, platform2, s, sL, loginState);
+	            
+	            break;
+	         case 2:
+	            String platform3 = "%Tiving%";
+	            show.select(connection, platform1, platform3, s, sL, loginState);
+	            
+	            break;
+	            
+	         case 3:
+	             String platform4 = "%Disney+%";
+	             show.select(connection, platform1, platform4, s, sL, loginState);
+	             
+	             break;   
+	            
+	         case 4:
+	            show.allSelect(connection, s, sL, loginState);
+	            break;
+	            
+	         case 5:
+	            System.out.println("메인메뉴로 돌아갑니다.");
+	            showRun = false;
+	         
+	         default : 
+	            System.out.println("올바른 메뉴를 입력하세요.");
+	         }
+	      }
+	   }// 서브메뉴, 종류별 장르별 보기
 
    public static void search(MemberDTO loginState, Scanner s, Scanner sL, Connection connection) {
      // MainExam main = new MainExam();

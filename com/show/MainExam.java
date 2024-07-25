@@ -32,7 +32,7 @@ public class MainExam {
 	public static void main(String[] args) {
 		MainExam mainExam = new MainExam();		
 		loginState = new MemberDTO(); //guest 용 객체로 loginState 생성
-		MenuSV.mainMenu(loginState, s, s, connection);
+		MenuSV.mainMenu(s, sL, loginState, connection);
 
 	}// main close
 

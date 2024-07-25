@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 import com.show.DTO.MemberDTO;
 import com.show.DTO.ReviewDTO;
+import com.show.SV.ReviewSV;
 
 public class ReviewDAO {
 

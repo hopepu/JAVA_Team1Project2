@@ -3,21 +3,14 @@ package com.show.SV;
 import java.sql.Connection;
 import java.util.Scanner;
 import com.show.DTO.MemberDTO;
-<<<<<<< HEAD
 import com.show.exception.NoExistException;
-=======
-import com.show.NoExistException;
->>>>>>> origin/kjs
 import com.show.DAO.MemberKDAO;
 
 public class FindSV {
 
 	/* 메소드-아이디찾기 */
-<<<<<<< HEAD
-	public void idFind(MemberDTO loginState, Scanner s, Scanner sL, Connection conn) {
-=======
 	public void idFind(Scanner s, Connection conn) {
->>>>>>> origin/kjs
+
 		// 입력받기(name, pNo, ssn)
 		MemberDTO findUser = new MemberDTO();// 찾은 정보 넣을 새 객체 준비
 
@@ -103,8 +96,5 @@ public class FindSV {
 
 	}// --pwFind()
 
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> origin/kjs
+

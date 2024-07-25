@@ -4,12 +4,10 @@ import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import com.show.NoExistException;
-import com.show.DTO.DramaDTO;
+import com.show.exception.NoExistException;
 import com.show.DTO.MemberDTO;
 import com.show.DTO.ReviewDTO;
 import com.show.DTO.ShowDTO;
-import com.show.DTO.VarietyDTO;
 
 public class MenuSV { // 모든 메뉴 모음
 	/*1. 메인메뉴 */

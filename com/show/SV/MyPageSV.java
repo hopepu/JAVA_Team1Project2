@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.show.DTO.MemberDTO;
-import com.show.NoExistException;
+import com.show.exception.NoExistException;
 import com.show.DAO.MemberKDAO;
 
 public class MyPageSV {
