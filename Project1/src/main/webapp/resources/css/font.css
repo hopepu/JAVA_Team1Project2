@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+h2, h4 { /*.noto-sans-kr-title  */
+  font-family: "Noto Sans KR", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+}
+
+p { /*..noto-sans-kr-text */
+  font-family: "Noto Sans KR", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+.orbit-regular {/*.orbit-regular*/
+  font-family: "Orbit", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+label,button {/*.jua-regular*/
+  font-family: "Jua", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
